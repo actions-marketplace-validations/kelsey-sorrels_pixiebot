@@ -1,0 +1,31 @@
+{
+    "name": "pixiebot",
+    "version": "0.0.1",
+    "description": "Does a tarot draw on every commit",
+    "main": "src/index.js",
+    "scripts": {
+      "lint": "eslint src/index.js",
+      "package": "ncc build src/index.js -o dist",
+      "test": "eslint src/index.js && jest --passWithNoTests"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/kelsey-santos/pixiebot.git"
+    },
+    "keywords": [],
+    "author": "Kelsey Santos",
+    "license": "GPLv3",
+    "bugs": {
+      "url": "https://github.com/kelsey-santos/pixiebot/issues"
+    },
+    "homepage": "https://github.com/kelsey-santos/pixiebot#readme",
+    "dependencies": {
+      "@actions/core": "^1.6.0",
+      "@actions/github": "^5.0.0"
+    },
+    "devDependencies": {
+      "@vercel/ncc": "^0.32.0",
+      "eslint": "^8.3.0",
+      "jest": "^27.4.3"
+    }
+  }

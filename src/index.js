@@ -171,15 +171,36 @@ const names = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pents14.jpg/69px-Pents14.jpg"
 ]
 
-function draw(commitId) {
-    const n = parseInt(commitId, 16) % (78 * 77);
-    const n0 = n % 78;
-    const n1 = Math.floor(n / 77);
-    return [names[n0], urls[n0], names[n1], urls[n1]];
+function draw(r) {
+  // Drawing two cards without replacement
+  // 78 possible first cards and 77 possible second cards (ie: 78* 77 = 6006 total 2-card draws)
+  // N = [0, 6006)
+  // n ∈ N
+  const n = r % (78 * 77);
+  // Let the index of the first and second cards be n0, and n1
+  // Let p(n) = n1 * 78 + n0 if n1 < n0
+  // and p(n) = n1 * 78 + n0 + 1 otherwise
+  
+  // Let n1 increment every 77 elements
+  const n0 = Math.floor(n / 77);
+  let n1 = n % 78;
+  // However if n1 = n0, create a gap and increment n1 by one
+  if (n1 >= n0) {
+    n1 += 1;
+  }
+  return [n1, n0];
+}
+
+function drawFromCommit(commitId) {
+  return draw(parseInt(commitId, 16));
 }
 
 function message(commitId) {
-    const [card_name_1, card_url_1, card_name_2, card_url_2] = draw(commitId);
+    const [n1, n2] = drawFromCommit(commitId);
+    const card_name_1 = names[n1];
+    const card_url_1 = urls[n1];
+    const card_name_2 = names[n2];
+    const card_url_2 = urls[n2];
     return "✨Pixiebot draws✨\n\n" + 
     '<div style="display:inline-block">' +
     '<img src="' + card_url_1 + '" />' +

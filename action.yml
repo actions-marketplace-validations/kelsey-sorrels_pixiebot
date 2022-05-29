@@ -1,4 +1,4 @@
-name: pixiebot
+name: pixie-bot
 description: 'Does a tarot draw on every commit'
 inputs:
   token:

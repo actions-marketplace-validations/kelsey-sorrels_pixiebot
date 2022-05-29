@@ -91,9 +91,9 @@ function getSha() {
 ]
 
 function draw(commitId) {
-    const n = parseInt(commitId, 16);
+    const n = parseInt(commitId, 16) % (78 * 77);
     const n0 = n % 78;
-    const n1 = 6006 - n0 * 78;
+    const n1 = Math.floor(n / 77);
     return [urls[n0], urls[n1]];
 }
 

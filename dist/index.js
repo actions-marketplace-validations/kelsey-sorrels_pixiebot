@@ -8749,7 +8749,7 @@ function draw(commitId) {
     const n = parseInt(commitId, 16) % (78 * 77);
     const n0 = n % 78;
     const n1 = Math.floor(n / 77);
-    return [names[0], urls[n0], names[1], urls[n1]];
+    return [names[n0], urls[n0], names[n1], urls[n1]];
 }
 
 function message(commitId) {

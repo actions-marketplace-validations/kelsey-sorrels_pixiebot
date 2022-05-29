@@ -8665,14 +8665,14 @@ function getSha() {
 ]
 
 function draw(commitId) {
-    const n = parseInt(commitId, 16);
-    const n0 = n % 78
-    const n1 = 6006 - n0 * 78
+    const n = parseInt(commitId, 16) % (78 * 77);
+    const n0 = n % 78;
+    const n1 = Math.floor(n / 77);
     return [urls[n0], urls[n1]];
 }
 
 function message(commitId) {
-    const [card_url_1, card_url_2] = draw(commitId)
+    const [card_url_1, card_url_2] = draw(commitId);
     return "✨Pixiebot draws✨\n\n" + 
     '<img src="' + card_url_1 + '" />' +
     '<img src="' + card_url_2 + '" />';

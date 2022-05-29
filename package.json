@@ -1,6 +1,6 @@
 {
     "name": "pixiebot",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Does a tarot draw on every commit",
     "main": "src/index.js",
     "scripts": {
